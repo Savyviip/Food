@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false
         },
-        name: {
+        diet: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true

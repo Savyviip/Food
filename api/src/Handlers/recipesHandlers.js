@@ -50,7 +50,7 @@ const postRecipesHandler = async (req, res) => {
   }
 };
 
-//* Controlador para la solicitud GET /recipes
+//* Controlador para la solicitud GET /recipes/title
 const getRecipesHandler = async (req, res) => {
   const { title } = req.query;
 
@@ -58,8 +58,18 @@ const getRecipesHandler = async (req, res) => {
   const results = title ? await getRecipeByTitle(title) : await getAllRecipes();
 
   try {
-    // Responder con los resultados obtenidos
-    res.send(await results);
+    if (title) {
+      if (results.length > 0) {
+        res.send(results);
+      } else {
+        res.send("Does not exist")
+      }
+    } else {
+       // Responder con los resultados obtenidos
+      res.send(results);
+    }
+   
+
   } catch (error) {
     // Manejar el error y responder con el código de estado y mensaje de error correspondientes
     res.status(error.response.status).json(error.response.data);

@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {  // validamos que el nombre tiene que ser entre 2 a 15 caracteres

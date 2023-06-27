@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  .title {
+    font-size: 32px;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    background-color: #45724bda;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(50px);
+    transition: transform 0.8s ease;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+  
+  .visible .title {
+    transform: translateY(0);
+  }
+  
+  .image-overlay {
+    margin-top: 50px;
+  }
+  
+  .image-overlay img {
+    width: 900px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    border: 3px solid #398139b7;
+    border-radius: 5px;
+  }

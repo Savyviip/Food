@@ -1,0 +1,37 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .card {
+    background-color:rgba(12, 13, 13, 0.896);
+    padding: 3em;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:auto;
+    width: auto;
+    min-width: 220px;
+    border-radius: 20px;
+    border-style:solid;
+    border-color: rgb(19, 133, 91);
+    box-shadow: 1rem 1rem 1rem rgba(59, 100, 65, 0.827);
+    
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(27, 183, 92, 0.1);
+    border-left-color: #3bb129;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

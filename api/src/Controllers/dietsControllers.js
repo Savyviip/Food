@@ -28,6 +28,7 @@ const createDiets = async () => {
     attributes: ['diet'], // Obtener solo el atributo diet
     order: [['diet', 'ASC']] // Ordenar las dietas en orden ascendente
   });
+  console.log(diets)
   return diets.map((diet) => diet.diet); // Extraer los nombres de las dietas en un nuevo arreglo y devolverlo
 };
 
