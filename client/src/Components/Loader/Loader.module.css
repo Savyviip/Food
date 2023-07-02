@@ -16,16 +16,16 @@
     min-width: 220px;
     border-radius: 20px;
     border-style:solid;
-    border-color: rgb(19, 133, 91);
-    box-shadow: 1rem 1rem 1rem rgba(59, 100, 65, 0.827);
+    border-color: rgb(248, 11, 7);
+    box-shadow: 1rem 1rem 1rem rgba(193, 17, 17, 0.8);
     
   }
   
   .spinner {
     width: 50px;
     height: 50px;
-    border: 5px solid rgba(27, 183, 92, 0.1);
-    border-left-color: #3bb129;
+    border: 5px solid rgba(224, 6, 6, 0.174);
+    border-left-color: #a00f0f;
     border-radius: 50%;
     animation: spin 1s infinite linear;
   }

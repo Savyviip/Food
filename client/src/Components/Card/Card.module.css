@@ -4,7 +4,7 @@
 } */
 
 .container{
-    background-color:rgb(1, 104, 67);
+    background-color:rgba(0, 0, 0, 0.769);
     display:flex;
     align-items:center;
     justify-content: left;
@@ -15,14 +15,15 @@
     min-width: 320px;
     border-radius: 20px;
     border-style:solid;
-    border-color: rgb(89, 153, 89);
-    box-shadow: 1rem 1rem 1rem rgba(47, 72, 52, 0.8);
+    border-color: rgb(248, 11, 7);
+    box-shadow: 1rem 1rem 1rem rgba(193, 17, 17, 0.8);
     transition: .6s;
 }
+
 .container:hover {
     transform: scale(1.1);
     z-index: 1;
-    background-color: rgb(37, 114, 55);
+    background-color: rgb(50, 9, 9);
 }
 
 .container:hover~.container {
@@ -36,31 +37,34 @@
 
 .img {
     border-radius: 300px 300px 300px 300px;
-    box-shadow: -1rem 0 3rem rgba(75, 119, 85, 0.486);
+    box-shadow: -1rem 0 3rem rgba(75, 9, 9, 0.486);
     height: 116px;
     width:156px;
     margin: 5px;
 
 }
-
+/* titulo y background */
 .title {
 border: #000; 
 border-width: 2px 1px 3px 1px;
 font-size:smaller;
-background-color: rgba(114, 172, 128, 0.599);
+background-color: rgba(157, 13, 13, 0.895);
 border-radius: 20px;
 margin: 5px;
 color: rgb(222, 221, 221);
 }
+
+/* background dela imagen */
 .list {
     display:flex;
     flex-direction: row;
     align-items:center;
     font-size: smaller;
-    background-color: rgba(114, 172, 128, 0.599);
+    background-color: rgba(103, 11, 11, 0.599);
     border-radius: 20px;
     margin: 5px;
 }
+
 .dietList {
     display: grid;
     justify-items: start; 

@@ -1,3 +1,4 @@
+/* Lo pongo en la mitad de la pantalla */
 .mainCont {
     display: flex;
     justify-content: center;
@@ -18,12 +19,12 @@
     align-items: center;
     flex-direction: column;
     width: 70%;
-    height: min-content;
+    /* height: min-content; */
     border-radius: 20px;
     border-style: solid;
-    border-color: rgb(8, 142, 92);
-    box-shadow: 1rem 1rem 1rem rgb(59, 101, 68);
-    margin-bottom: 5px;
+    border-color: rgb(248, 11, 7);
+    box-shadow: 1rem 1rem 1rem rgba(193, 17, 17, 0.8);
+    /* margin-bottom: 5px; */
   }
   
   .CardGroup {
@@ -39,6 +40,7 @@
     margin-bottom: 10px;
   }
   
+  /* le pongo un margen abajo */
   .footer {
     display: flex;
     justify-content: space-around;
@@ -47,10 +49,12 @@
     padding-bottom: 1em;
   }
   
+  /* pongo la medio el searchbar */
   .searchBar {
     margin-right: 5em;
   }
   
+  /* espacio entre tarjetas */
   .Space {
     margin-top: 20px;
   }

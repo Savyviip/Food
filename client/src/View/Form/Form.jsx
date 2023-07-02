@@ -157,19 +157,19 @@ const Form = () => {
       };
 
       // Envío del formulario al servidor usando axios
-      // axios
-      //   .post("http://localhost:3001/recipes", updatedForm)
-      //   .then((res) => {
-      //     alert(
-      //       `Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`
-      //     );
-      //     history.push("/home"); // Redireccionar al home después de crear la receta
-      //   })
-      //   .catch((error) => {
-      //     alert(
-      //       `ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`
-      //     );
-      //   });
+      axios
+        .post("http://localhost:3001/recipes", updatedForm)
+        .then((res) => {
+          alert(
+            `Success!!\n${res.statusText}\nID:${res.data[0].id}\n${res.data[0].title}`
+          );
+          // history.push("/home"); // Redireccionar al home después de crear la receta
+        })
+        .catch((error) => {
+          alert(
+            `ERROR\nStatus: ${error.response.status}\nMessage: ${error.response.data.error}`
+          );
+        });
     }
   };
 

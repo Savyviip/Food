@@ -13,6 +13,7 @@ const ThreeDotsMenu = () => {
   ];
 
   return (
+    <div className={styles.containerMenu}>
     <div className={styles.menu}>
       {menuItems.map((item, index) => (
         // Crea un enlace utilizando la ruta del elemento del menú y la clase CSS "link"
@@ -20,6 +21,7 @@ const ThreeDotsMenu = () => {
           <p>{item.label}</p> 
         </Link>// Muestra la etiqueta del elemento del menú dentro de un párrafo
       ))}
+    </div>
     </div>
   );
 };

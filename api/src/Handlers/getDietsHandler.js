@@ -5,6 +5,7 @@ const getDietsHandler = async (req, res) => {
   try {
     // Llamar a la función createDiets para cargar las dietas en la base de datos
     const diets = await createDiets();
+    console.log("hola handler")
 
     // Responder con un mensaje de éxito y las dietas cargadas
     res.status(201).json({

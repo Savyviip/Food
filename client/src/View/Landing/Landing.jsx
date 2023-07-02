@@ -5,7 +5,8 @@ const Landing = () => {
   return (
     <div className={styles.landing}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Foods API Project</h1>
+        <h1 className={styles.title}>Foods Project</h1>
+        <h3 className={styles.title2}>By: Parma Javier</h3>
         <Link to="/home">
           <button className={styles.button}>Home</button>
         </Link>

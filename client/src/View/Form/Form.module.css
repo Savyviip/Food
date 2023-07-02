@@ -14,17 +14,18 @@
     width: auto;
     height: auto;
     border-radius: 20px;
-    border: 2px solid rgb(12, 200, 131);
-    box-shadow: 1rem 1rem 1rem rgba(42, 79, 46, 0.637);
+    border-color: rgb(248, 11, 7);
+    box-shadow: 1rem 1rem 2rem rgba(193, 17, 17, 0.8);
     padding: 1em;
   }
   
   .formContainer h3 {
     color: #ffffff; /* Cambia el color a rojo */
+    -webkit-text-stroke: 0.5px rgb(213, 27, 27);
   }
   
   .formContainer label {
-    color: rgb(67, 230, 170);
+    color: rgb(255, 24, 24);
   }
   
   .formContainer input {

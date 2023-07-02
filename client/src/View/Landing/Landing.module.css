@@ -7,22 +7,31 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgba(52, 66, 62, 0.834);
+    /* background-color: rgba(24, 19, 19, 0); */
+    background-image: url(https://img.freepik.com/foto-gratis/comida-ingredientes_1220-4884.jpg?w=1380&t=st=1688171211~exp=1688171811~hmac=8e825ad298a839e1a6d9409d0ee679a255740dbc1deedf37651fd6da96042b18);
   }
   
-  .content {
+  /* .content {
     text-align: center;
-  }
+  } */
   
   .title {
-    color: rgb(19, 133, 91);
+    color: rgb(225, 20, 20);
     font-size: 5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-family: 'text1';
+    -webkit-text-stroke: 2px rgb(213, 27, 27);
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.454);
+  }
+
+  .title2 {
+    padding-bottom: 2rem;
+    -webkit-text-stroke: 1px rgb(213, 27, 27);
+  -webkit-text-fill-color: white;
   }
   
   .button {
-    background-color: rgb(19, 133, 91);
+    background-color: rgb(55, 6, 6);
     color: rgb(255, 255, 255);
     padding: 0.8em 1.5em;
     font-size: 2rem;
@@ -31,11 +40,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'text1';
-    box-shadow: 0 0 10px rgb(59, 101, 68);
+    box-shadow: 0 0 30px rgb(222, 36, 26);
   }
   
   .button:hover {
-    background-color: rgb(59, 101, 68);
+    background-color: rgb(181, 0, 0);
     transform: scale(1.1);
   }
   

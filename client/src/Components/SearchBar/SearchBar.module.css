@@ -9,20 +9,20 @@
     height: 18px;
     padding: 8px 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     border-radius: 20px; /* Ajusta el valor según el redondeo deseado */
     margin-right: 10px;
   }
   
   .searchInput:hover {
-    background-color: rgba(87, 87, 87, 0.769);
+    background-color: rgba(249, 249, 249, 0.769);
     color: white; /* Ajusta el color del borde al pasar el cursor sobre el input */
   }
   
   .searchButton {
     padding: 9px 16px;
     font-size: 16px;
-    background-color: #0b5604;
+    background-color: #910e0e;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -31,5 +31,5 @@
   }
   
   .searchButton:hover {
-    background-color: #0056b3;
+    background-color: #f01515;
   }

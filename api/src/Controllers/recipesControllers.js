@@ -12,7 +12,10 @@ const createRecipe = async (title, image, summary, healthScore, analyzedInstruct
   // Encontrar o crear instancias de los tipos de dietas asociados con la receta
   const dietInstances = await Promise.all(diets.map(diet => Diet.findOrCreate({ where: { diet } })));
   //Asociar los tipos de dietas con la receta
-  await newRecipe.addDiets(dietInstances.map(diet => [0].id));
+  // console.log(dietInstances.map(diet => [0].id))
+  // await newRecipe.addDiet(1);
+  await newRecipe.setDiets(dietInstances.map(diet => diet[0].id));
+
   //Obtener los tipos de dietas asociados con la receta
   const recipeDiets = await newRecipe.getDiets();
   // Devolver un objeto que contenga la informacion de la receta y los tipos de dietas
@@ -56,68 +59,43 @@ const getRecipeByTitle = async (title) => {
     limit: 15
   });
   //* Buscar recetas en la API externa que coincidan con el título
-  const response = (await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)).data;
-  
-  response.results.filter(e => {
-        if (e.title.toLowerCase().includes(title.toLowerCase())) {
-          console.log(e.title)
-          foodArray.push({
-            id: e.id,
-            title: e.title,
-            image: e.image,
-            summary: e.summary,
-            healthScore: e.healthScore,
-            diets: e.diets,
-            analyzedInstructions: e.analyzedInstructions[0]?.steps.map(e => {
-              return e.step
-            }),
-          })
-        }
-      });
-      return foodArray;
+  const apiRecipesRaw = (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=9d382ee9e48a404dbfe5e535fbd77584&number=100&query=${title}&addRecipeInformation=true`)).data.results;
+  // const response = (await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)).data;
 
+  // response.results.filter(e => {
+  //   if (e.title.toLowerCase().includes(title.toLowerCase())) {
+  //     console.log(e.title)
+  //     foodArray.push({
+  //       id: e.id,
+  //       title: e.title,
+  //       image: e.image,
+  //       summary: e.summary,
+  //       healthScore: e.healthScore,
+  //       diets: e.diets,
+  //       analyzedInstructions: e.analyzedInstructions[0]?.steps.map(e => {
+  //         return e.step
+  //       }),
+  //     })
+  //   }
+  // });
+  // return foodArray;
+  // }
 
+  // Limpiar los datos de las recetas obtenidas
+  const apiRecipes = cleanArray(apiRecipesRaw);
+  const dbRecipes = cleanArray(dbRecipesRaw);
 
+  // Combinar los resultados de la base de datos y la API
+  const result = [...dbRecipes, ...apiRecipes];
+  // const result = [...dbRecipesRaw, ...foodArray];
 
+  if (result.length === 0) {
+    // Devolver un mensaje de error si no se encontraron recetas
+    return { message: `There's no available recipes for your query: '${title}'.` };
+  }
 
-
-    // let response;
-    // var foodForName = [];
-    // if (source === "api") {
-    //   // Obtener la receta de la API externa
-    //   response = (await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)).data;
-    //   // Extraemos la informacion de api recorriendo los objetos que necesitamos.
-    //   response.results.forEach(e => {
-    //     if (e.title == title) {
-    //       foodForName.push({
-    //         id: e.id,
-    //         title: e.title,
-    //         image: e.image,
-    //         summary: e.summary,
-    //         healthScore: e.healthScore,
-    //         diets: e.diets,
-    //         analyzedInstructions: e.analyzedInstructions[0]?.steps.map(e => {
-    //           return e.step
-    //         }),
-    //       })
-    //     }
-    //   });
-    }
-
-//   // Limpiar los datos de las recetas obtenidas
-//   const apiRecipes = cleanArray(apiRecipesRaw);
-//   const dbRecipes = cleanArray(dbRecipesRaw);
-
-//   // Combinar los resultados de la base de datos y la API
-//   const result = [...dbRecipes, ...apiRecipes];
-
-//   if (result.length === 0) {
-//     // Devolver un mensaje de error si no se encontraron recetas
-//     return { message: `There's no available recipes for your query: '${title}'.` };
-//   }
-
-//   return result;
-// };
+  return result;
+};
 
 //* Obtener todas las recetas de la API externa
 const getAllRecipes = async () => {
@@ -135,7 +113,7 @@ const getAllRecipes = async () => {
   const apiRecipes = cleanArray(apiRecipesRaw);
 
   // Combinar los resultados de la base de datos y la API
-  return [ ...apiRecipes];
+  return [...apiRecipes];
 };
 
 //* Función para obtener una receta por ID de la base de datos o la API externa
@@ -215,3 +193,26 @@ module.exports = {
   getAllRecipes,
   deleteRecipeById,
 };
+
+
+    // let response;
+    // var foodForName = [];
+    // if (source === "api") {
+    //   // Obtener la receta de la API externa
+    //   response = (await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)).data;
+    //   // Extraemos la informacion de api recorriendo los objetos que necesitamos.
+    //   response.results.forEach(e => {
+    //     if (e.title == title) {
+    //       foodForName.push({
+    //         id: e.id,
+    //         title: e.title,
+    //         image: e.image,
+    //         summary: e.summary,
+    //         healthScore: e.healthScore,
+    //         diets: e.diets,
+    //         analyzedInstructions: e.analyzedInstructions[0]?.steps.map(e => {
+    //           return e.step
+    //         }),
+    //       })
+    //     }
+    //   });
