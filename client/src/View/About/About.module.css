@@ -12,27 +12,21 @@
     color: #ffffff;
     text-align: center;
     padding: 20px;
-    background-color: #45724bda;
+    background-color: #ff002f;
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transform: translateY(50px);
-    transition: transform 0.8s ease;
-  }
-  
-  .visible {
-    opacity: 1;
-  }
-  
-  .visible .title {
-    transform: translateY(0);
+    -webkit-text-stroke: 1.5px rgb(0, 0, 0);
   }
   
   .image-overlay {
-    margin-top: 50px;
+    margin-top: 35px;
   }
   
   .image-overlay img {
-    width: 900px; /* Ajusta el tamaño de la imagen según tus necesidades */
-    border: 3px solid #398139b7;
+    width: 1100px;
+    border: 3px solid #ec0c0cec;
     border-radius: 5px;
+  }
+  .visible {
+    opacity: 1;
   }
