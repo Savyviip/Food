@@ -12,7 +12,7 @@ const deleteRecipeHandler = async (req, res) => {
   const { id } = req.params;
 
   try {
-    //* Eliminar la receta utilizando la función deleteRecipeById
+    // Eliminar la receta utilizando la función deleteRecipeById
     const deletedCount = await deleteRecipeById(id);
 
     if (deletedCount === 0) {
@@ -29,7 +29,7 @@ const deleteRecipeHandler = async (req, res) => {
 };
 
 
-//* Controlador para la solicitud POST /recipes
+// Controlador para la solicitud POST /recipes
 const postRecipesHandler = async (req, res) => {
   const { title, image, summary, healthScore, analyzedInstructions, diets } = req.body;
 
@@ -50,30 +50,34 @@ const postRecipesHandler = async (req, res) => {
   }
 };
 
-//* Controlador para la solicitud GET /recipes/title
+// Controlador para la solicitud GET /recipes
 const getRecipesHandler = async (req, res) => {
   const { title } = req.query;
+  let recipesTotal = await getAllRecipes()
+if (title ) {
+  try {
+    const recipeTitle = recipesTotal.filter(e => e.title.toLowerCase().includes(title.toLowerCase()) )
+    recipeTitle.length ?
+    res.status(200).send(recipeTitle) : 
+    res.status(404).send("No existe la receta con ese texto")
+  } catch (error) {
+    return res.status(400).send({error: error.message})
+  }
+} else {
+  res.status(200).send(recipesTotal)
+}
+
 
   // Obtener los resultados en función de si hay una consulta de título o no
-  const results = title ? await getRecipeByTitle(title) : await getAllRecipes();
+  // const results = title ? await getRecipeByTitle(title) : await getAllRecipes();
 
-  try {
-    if (title) {
-      if (results.length > 0) {
-        res.send(results);
-      } else {
-        res.send("Does not exist")
-      }
-    } else {
-       // Responder con los resultados obtenidos
-      res.send(results);
-    }
-   
-
-  } catch (error) {
-    // Manejar el error y responder con el código de estado y mensaje de error correspondientes
-    res.status(error.response.status).json(error.response.data);
-  }
+  // try {
+  //   // Responder con los resultados obtenidos
+  //   res.send(results);
+  // } catch (error) {
+  //   // Manejar el error y responder con el código de estado y mensaje de error correspondientes
+  //   res.status(error.response.status).json(error.response.data);
+  // }
 };
 
 //* Controlador para la solicitud GET /recipes/:id
@@ -83,10 +87,12 @@ const getRecipeByIdHandler = async (req, res) => {
 
   try {
     // Obtener la receta por ID utilizando la función getRecipeById
-    const recipe = await getRecipeById(id, source);
+    // const recipe = await getRecipeById(id, source); //* -------------------------------------
+const recipe = await getAllRecipes();
+const recipeFilter = recipe.filter(e => e.id == id)
 
     // Responder con el objeto JSON de la receta obtenida
-    res.status(200).json(recipe);
+    res.status(200).json(recipeFilter);
   } catch (error) {
     if (source === "db") {
       // Manejar el error relacionado con la base de datos y responder con un código de estado 400 y un mensaje de error

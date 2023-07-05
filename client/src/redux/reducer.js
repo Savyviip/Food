@@ -45,34 +45,34 @@ import {
         // Actualiza las recetas filtradas por título en el estado
         return { ...state, recipes: action.payload };
       case SORT_AZ_ASC:
-        // Ordena las recetas alfabéticamente ascendente
+        //* Ordena las recetas alfabéticamente ascendente -----------------------------
         const sortedRecipesAZ = [...state.recipes].sort((a, b) =>
-          a.title.localeCompare(b.title)
+          a.title.localeCompare(b.title)  // localecompare ordenamiento y sort los ordena
         );
         return { ...state, recipes: sortedRecipesAZ };
       case SORT_AZ_DES:
-        // Ordena las recetas alfabéticamente descendente
+        //* Ordena las recetas alfabéticamente descendente ------------------------------
         const sortedRecipesZA = [...state.recipes].sort((a, b) =>
           b.title.localeCompare(a.title)
         );
         return { ...state, recipes: sortedRecipesZA };
       case SORT_HS_ASC:
-        // Ordena las recetas por puntuación de salud ascendente
+        //* Ordena las recetas por puntuación de salud ascendente -----------------------
         const sortedRecipesHSAsc = [...state.recipes].sort(
           (a, b) => b.healthScore - a.healthScore
         );
         return { ...state, recipes: sortedRecipesHSAsc };
       case SORT_HS_DES:
-        // Ordena las recetas por puntuación de salud descendente
+        //* Ordena las recetas por puntuación de salud descendente -----------------------
         const sortedRecipesHSDes = [...state.recipes].sort(
           (a, b) => a.healthScore - b.healthScore
         );
         return { ...state, recipes: sortedRecipesHSDes };
       case FILTER_SOURCE:
-        // Restablece los filtros y muestra todas las recetas
+        //* Restablece los filtros y muestra todas las recetas -------------boton ---------
         return { ...state, recipes: state.allRecipes };
       case FILTER_SOURCE_API:
-        // Filtra las recetas por fuente API
+        //* Filtra las recetas por fuente API ----------------- recetas api o db ------------
         const filteredRecipesApi = state.allRecipes.filter(
           (recipe) => typeof recipe.id === "number"
         );
